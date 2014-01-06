@@ -1,7 +1,7 @@
 [Workspace Header]
 Version = 1300
-Pathname Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V3/cvi2013/CV"
-Pathname Line0002 = "I Function Calls Extractor.cws"
+Pathname Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
+Pathname Line0002 = "nCallsExtractor/cvi2013/CVI Function Calls Extractor.cws"
 CVI Dir = "/c/program files (x86)/national instruments/cvi2013"
 CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
 CVI Pub Local Dir = "/C/ProgramData/National Instruments/CVI2013"
@@ -11,18 +11,23 @@ IVI Standard Root 64-bit Dir = "/C/Program Files/IVI Foundation/IVI"
 VXIplug&play Framework Dir = "/C/Program Files (x86)/IVI Foundation/VISA/winnt"
 VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 2
-Active Project = 2
-Project 0001 = "test bug.prj"
-Project 0002 = "CVI Function Calls Extractor.prj"
-Project 0002 Folder User Interface Files Collapsed = True
-Project 0002 FolderId 1 Collapsed = True
-Project 0002 Folder Library Files Collapsed = True
-Project 0002 FolderId 2 Collapsed = True
+Active Project = 1
+Project 0001 = "CVI Function Calls Extractor.prj"
+Project 0001 Folder Source Files Collapsed = True
+Project 0001 FolderId 0 Collapsed = True
+Project 0001 Folder User Interface Files Collapsed = True
+Project 0001 FolderId 1 Collapsed = True
+Project 0001 Folder Library Files Collapsed = True
+Project 0001 FolderId 2 Collapsed = True
+Project 0002 = "test bug.prj"
+Project 0002 Collapsed = True
+Project 0002 Folder Source Files Collapsed = True
+Project 0002 FolderId 0 Collapsed = True
 Drag Bar Left = 232
-Window Top = 42
-Window Left = 594
-Window Bottom = 1054
-Window Right = 1900
+Window Top = 65
+Window Left = 558
+Window Bottom = 1077
+Window Right = 1864
 Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -46,7 +51,7 @@ FileSizeColumnWidth = 70
 Version = 1300
 Don't Update DistKit = False
 Platform Code = 4
-Build Configuration = "Debug64"
+Build Configuration = "Debug"
 Warn User If Debugging Release = 1
 Batch Build Release = False
 Batch Build Debug = False
@@ -55,60 +60,62 @@ Batch Build Debug = False
 Version = 1300
 Don't Update DistKit = False
 Platform Code = 4
-Build Configuration = "Debug"
+Build Configuration = "Debug64"
 Warn User If Debugging Release = 1
 Batch Build Release = False
 Batch Build Debug = False
 
 [File 0001]
-Path = "/c/Program Files (x86)/National Instruments/CVI2013/sdk/lib/msvc/Ole32.lib"
-File Type = "Library"
-Disk Date = 3455074800
-In Projects = "2,"
-
-[File 0002]
-Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V3/assets/fro"
-Path Line0002 = "ntend.uir"
-File Type = "User Interface Resource"
-Disk Date = 3471700835
-In Projects = "2,"
-
-[File 0003]
-Path = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V3/src/main.c"
+Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
+Path Line0002 = "nCallsExtractor/src/main.c"
 File Type = "CSource"
 Disk Date = 3471892541
-In Projects = "2,"
+In Projects = "1,"
 Window Top = 92
 Window Left = 42
 Window Z-Order = 2
 Source Window State = "1,88,88,88,2,19,2,1,0,74,0,0,0,0,0,25,69,0,81,38,401,588,1,0,"
 
-[File 0004]
-Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V3/src/GetCVI"
-Path Line0002 = "Dir.c"
+[File 0002]
+Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
+Path Line0002 = "nCallsExtractor/src/GetCVIDir.c"
 File Type = "CSource"
 Disk Date = 3471696016
-In Projects = "2,"
+In Projects = "1,"
+Window Top = 30
 Window Z-Order = 1
-Source Window State = "1,0,0,0,0,0,0,0,0,144,0,0,0,0,0,39,170,0,170,0,400,600,0,0,"
+Source Window State = "1,0,0,0,0,0,0,0,0,144,0,0,0,0,0,59,170,0,170,0,400,600,1,0,"
 
-[File 0005]
-Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V3/src/test b"
-Path Line0002 = "ug.c"
+[File 0003]
+Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
+Path Line0002 = "nCallsExtractor/src/test bug.c"
 File Type = "CSource"
 Disk Date = 3471719892
-In Projects = "1,"
+In Projects = "2,"
 Window Top = 62
 Window Left = 26
 Window Z-Order = 3
 Source Window State = "1,0,0,0,0,0,0,0,0,74,0,0,0,0,0,25,0,0,0,0,401,588,1,0,"
+
+[File 0004]
+Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
+Path Line0002 = "nCallsExtractor/assets/frontend.uir"
+File Type = "User Interface Resource"
+Disk Date = 3471700835
+In Projects = "1,"
+
+[File 0005]
+Path = "/c/Program Files (x86)/National Instruments/CVI2013/sdk/lib/msvc/Ole32.lib"
+File Type = "Library"
+Disk Date = 3455074800
+In Projects = "1,"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True
 Enable Uninitialized Locals Runtime Warning = True
 Batch Build = False
 Profile = "Disabled"
-Debugging Level = "Extended"
+Debugging Level = "Standard"
 Execution Trace = "Disabled"
 Command Line Args = ""
 Working Directory = ""
@@ -196,7 +203,7 @@ Generate Browse Info = True
 Enable Uninitialized Locals Runtime Warning = True
 Batch Build = False
 Profile = "Disabled"
-Debugging Level = "Standard"
+Debugging Level = "Extended"
 Execution Trace = "Disabled"
 Command Line Args = ""
 Working Directory = ""
