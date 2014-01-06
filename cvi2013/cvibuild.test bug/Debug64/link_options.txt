@@ -1,0 +1,39 @@
+-nologo
+-out:c:\Users\frbaucop\Documents\Perso\CVI\CVI Function Calls Extractor\V3\cvi2013\cvibuild.test bug\Debug64\test bug.exe
+-arch:x64
+-timestamp
+-debug:2
+-res:c:\Users\frbaucop\Documents\Perso\CVI\CVI Function Calls Extractor\V3\cvi2013\cvibuild.test bug\Debug64\resources.res
+-entry:CVIWinMainStartupCodeForDebugging
+-base:0x400000
+-linked:c:\Users\frbaucop\Documents\Perso\CVI\CVI Function Calls Extractor\V3\cvi2013\cvibuild.test bug\Debug64\linkersummary.txt
+-dlldeps:c:\Users\frbaucop\Documents\Perso\CVI\CVI Function Calls Extractor\V3\cvi2013\cvibuild.test bug\Debug64\dlldependencies.txt
+-licensing:c:\Users\frbaucop\Documents\Perso\CVI\CVI Function Calls Extractor\V3\cvi2013\cvibuild.test bug\Debug64\linkerlicensing.txt
+-browsedeps:c:\Users\frbaucop\Documents\Perso\CVI\CVI Function Calls Extractor\V3\cvi2013\cvibuild.test bug\Debug64\moduledependencies.txt
+-stackreserve:1048576
+-stackcommit:4096
+-in:c:\Users\frbaucop\Documents\Perso\CVI\CVI Function Calls Extractor\V3\cvi2013\cvibuild.test bug\Debug64\test bug.obj
+-more:c:\program files (x86)\national instruments\cvi2013\bin\msvc64\cvistart.lib
+-more:c:\program files (x86)\national instruments\cvi2013\bin\msvc64\cvi.lib
+-more:c:\program files (x86)\national instruments\cvi2013\sdk\lib\msvc64\advapi32.lib
+-more:c:\ProgramData\National Instruments\CVI2013\bin\msvc64\analysis.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2013\toolslib\toolbox\msvc64\asynctmr.obj
+-more:c:\Program Files (x86)\National Instruments\CVI2013\bin\msvc64\cviauto.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2013\bin\msvc64\cviddc.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2013\bin\msvc64\cvidotnet.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2013\bin\msvc64\cvinetstreams.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2013\bin\msvc64\cvinetv.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2013\bin\msvc64\cvintwrk.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2013\bin\msvc64\cvitdms.lib
+-more:c:\program files (x86)\national instruments\cvi2013\sdk\lib\msvc64\gdi32.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2013\bin\msvc64\gpib.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\ivi.lib
+-more:c:\program files (x86)\national instruments\cvi2013\sdk\lib\msvc64\kernel32.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\NIDAQmx.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\nisyscfg.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2013\bin\msvc64\omp.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2013\toolslib\toolbox\msvc64\toolbox.obj
+-more:c:\program files (x86)\national instruments\cvi2013\sdk\lib\msvc64\user32.lib
+-more:c:\program files (x86)\national instruments\cvi2013\sdk\lib\msvc64\uuid.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\visa.lib
+-more:c:\program files (x86)\national instruments\cvi2013\sdk\lib\msvc64\winmm.lib
