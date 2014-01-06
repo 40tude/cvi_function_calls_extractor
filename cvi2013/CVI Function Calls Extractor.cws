@@ -13,8 +13,6 @@ VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 2
 Active Project = 1
 Project 0001 = "CVI Function Calls Extractor.prj"
-Project 0001 Folder Source Files Collapsed = True
-Project 0001 FolderId 0 Collapsed = True
 Project 0001 Folder User Interface Files Collapsed = True
 Project 0001 FolderId 1 Collapsed = True
 Project 0001 Folder Library Files Collapsed = True
@@ -41,7 +39,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 3
+Number of Opened Files = 4
 Window Confinement Region Enabled = True
 MainColumnWidth = 215
 FileDateColumnWidth = 70
@@ -73,8 +71,8 @@ Disk Date = 3471892541
 In Projects = "1,"
 Window Top = 92
 Window Left = 42
-Window Z-Order = 2
-Source Window State = "1,88,88,88,2,19,2,1,0,74,0,0,0,0,0,25,69,0,81,38,401,588,1,0,"
+Window Z-Order = 1
+Source Window State = "1,88,88,88,2,19,2,1,0,144,0,0,0,0,0,59,69,0,81,38,401,588,1,0,"
 
 [File 0002]
 Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
@@ -83,8 +81,8 @@ File Type = "CSource"
 Disk Date = 3471696016
 In Projects = "1,"
 Window Top = 30
-Window Z-Order = 1
-Source Window State = "1,0,0,0,0,0,0,0,0,144,0,0,0,0,0,59,170,0,170,0,400,600,1,0,"
+Window Z-Order = 3
+Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,24,170,0,170,0,400,600,1,0,"
 
 [File 0003]
 Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
@@ -94,7 +92,7 @@ Disk Date = 3471719892
 In Projects = "2,"
 Window Top = 62
 Window Left = 26
-Window Z-Order = 3
+Window Z-Order = 4
 Source Window State = "1,0,0,0,0,0,0,0,0,74,0,0,0,0,0,25,0,0,0,0,401,588,1,0,"
 
 [File 0004]
@@ -109,6 +107,16 @@ Path = "/c/Program Files (x86)/National Instruments/CVI2013/sdk/lib/msvc/Ole32.l
 File Type = "Library"
 Disk Date = 3455074800
 In Projects = "1,"
+
+[File 0006]
+Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
+Path Line0002 = "nCallsExtractor/README.txt"
+File Type = "Unknown"
+Disk Date = 3471896416
+In Projects = "1,"
+Window Top = 62
+Window Left = 26
+Window Z-Order = 2
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True
