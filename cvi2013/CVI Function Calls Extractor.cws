@@ -22,11 +22,11 @@ Project 0002 Collapsed = True
 Project 0002 Folder Source Files Collapsed = True
 Project 0002 FolderId 0 Collapsed = True
 Drag Bar Left = 232
-Window Top = 65
-Window Left = 558
-Window Bottom = 1077
-Window Right = 1864
-Maximized = False
+Window Top = 60
+Window Left = 695
+Window Bottom = 1072
+Window Right = 2001
+Maximized = True
 Maximized Children = True
 Max32 Number Of Errors = 20
 Track Include File Dependencies = True
@@ -67,22 +67,21 @@ Batch Build Debug = False
 Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
 Path Line0002 = "nCallsExtractor/src/main.c"
 File Type = "CSource"
-Disk Date = 3471892541
+Disk Date = 3472103966
 In Projects = "1,"
 Window Top = 92
 Window Left = 42
 Window Z-Order = 1
-Source Window State = "1,88,88,88,2,19,2,1,0,144,0,0,0,0,0,59,69,0,81,38,401,588,1,0,"
+Source Window State = "1,74,74,74,2,20,2,1,0,232,0,0,0,0,0,60,0,0,59,0,401,588,1,0,"
 
 [File 0002]
 Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
 Path Line0002 = "nCallsExtractor/src/GetCVIDir.c"
 File Type = "CSource"
-Disk Date = 3471696016
+Disk Date = 3472098640
 In Projects = "1,"
 Window Top = 30
-Window Z-Order = 3
-Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,24,170,0,170,0,400,600,1,0,"
+Source Window State = "1,166,171,166,0,8160,0,1,0,76,0,0,0,0,0,24,128,0,164,0,400,600,1,0,"
 
 [File 0003]
 Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
@@ -92,31 +91,61 @@ Disk Date = 3471719892
 In Projects = "2,"
 Window Top = 62
 Window Left = 26
-Window Z-Order = 4
 Source Window State = "1,0,0,0,0,0,0,0,0,74,0,0,0,0,0,25,0,0,0,0,401,588,1,0,"
 
 [File 0004]
+Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
+Path Line0002 = "nCallsExtractor/README.txt"
+File Type = "Unknown"
+Disk Date = 3472018351
+In Projects = "1,"
+Window Top = 32
+Window Left = 10
+
+[File 0005]
 Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
 Path Line0002 = "nCallsExtractor/assets/frontend.uir"
 File Type = "User Interface Resource"
 Disk Date = 3471700835
 In Projects = "1,"
 
-[File 0005]
-Path = "/c/Program Files (x86)/National Instruments/CVI2013/sdk/lib/msvc/Ole32.lib"
+[File 0006]
+Path = "/c/program files (x86)/national instruments/cvi2013/sdk/lib/msvc/Ole32.lib"
 File Type = "Library"
 Disk Date = 3455074800
 In Projects = "1,"
 
-[File 0006]
+[File 0007]
 Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
-Path Line0002 = "nCallsExtractor/README.txt"
-File Type = "Unknown"
-Disk Date = 3471896416
-In Projects = "1,"
+Path Line0002 = "nCallsExtractor/src/clang directives.h"
+File Type = "Include"
+Disk Date = 3472100574
+In Projects = ""
 Window Top = 62
 Window Left = 26
+Window Z-Order = 4
+Source Window State = "1,1,1,1,13,23,23,2,0,96,0,0,0,0,0,25,43,0,50,13,401,742,1,0,"
+
+[File 0008]
+Path = "/c/Program Files (x86)/National Instruments/CVI2013/sdk/include/WinBase.h"
+File Type = "Include"
+Disk Date = 3455074800
+In Projects = ""
+Window Top = 92
+Window Left = 42
+Window Z-Order = 3
+Source Window State = "1,0,0,0,0,0,0,0,0,95,0,0,0,0,0,25,3470,0,3482,0,401,742,1,0,"
+
+[File 0009]
+Path Line0001 = "/c/Users/frbaucop/Documents/Perso/CVI/CVI Function Calls Extractor/V4/CVIFunctio"
+Path Line0002 = "nCallsExtractor/src/HeaderFooter_HTML.h"
+File Type = "Include"
+Disk Date = 3472099974
+In Projects = ""
+Window Top = 122
+Window Left = 58
 Window Z-Order = 2
+Source Window State = "1,0,0,0,0,0,0,0,0,96,0,0,0,0,0,25,0,0,0,24,401,742,1,0,"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

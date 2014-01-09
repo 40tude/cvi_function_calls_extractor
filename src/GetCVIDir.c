@@ -1,38 +1,27 @@
-#include <windows.h>             
-#include <utility.h>
+#include <windows.h>  
+#ifdef _CVI_         
+  #include <utility.h> // SetBreakOnLibraryErrors
+#endif
 #include <winreg.h>   
 #include <objbase.h>
 #include <shlobj.h>
-
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "GetCVIDir.h"
 
-
-#define MAX_NB_CVI_COPY 10
-
 // ----------------------------------------------------------------------------
-static int VerToInt(char *Buffer);
-static HRESULT ResolveIt(HWND hwnd, LPCTSTR lpszLinkFile, LPTSTR lpszPath, int iPathBufferSize);
-
-// Used to qualify the differents CVI installation on the PC where the wizard is used
-typedef struct tag_CVI_INFO{
-  int   Index;
-  char  Value[MAX_PATH];
-  int   nVer;
-}CVI_INFO;  
-
-
+static int      VerToInt(char *Buffer);
+static HRESULT  ResolveIt(HWND hwnd, LPCTSTR lpszLinkFile, LPTSTR lpszPath, int iPathBufferSize);
 
 // ----------------------------------------------------------------------------
 int GetCVI_SamplesDir(char *SamplesDir){
   
-  char CVI_Dir[MAX_PATH];
+  static char CVI_Dir[MAX_PATH];
   
   int err = GetCVIDir(CVI_Dir); 
   if(!err){
-    // CVI_Dir already has a '\' at the end
+    // CVI_Dir already has a '\' at the end of the string
     strcat(CVI_Dir, "samples\\CVI Samples.lnk");
 #ifdef _CVI_         
     SetBreakOnLibraryErrors (0); 
@@ -51,54 +40,51 @@ int GetCVI_SamplesDir(char *SamplesDir){
   return err;
 }
 
-
-
 //-----------------------------------------------------------------------------
 // Use the information into the registry to find out the latest version of
 // CVI installed on the PC
 // No more than MAX_NB_CVI_COPY (10 by default) copy of CVI can be 
 // detected on the same PC
-int GetCVIDir(char *CVIDir){
 
-  int         error=0;
-  int         i, status;
-  LONG        retCode;
-  int         BufferSize, ClassSize;
-  HKEY        handle;
-  int         *Reserved=NULL;
-  FILETIME    LastWrite;
-  CVI_INFO    ArrOfCVIInfo[MAX_NB_CVI_COPY];
+// Used to store the differents CVI installations on the PC where the wizard is used
+typedef struct tag_CVI_INFO{
+  int   Index;
+  char  Value[MAX_PATH];
+  int   nVer;
+}CVI_INFO;  
+
+int GetCVIDir(char *CVIDir){
   
-  int         VerMaxId=0, VerMax=0;
-  int         type = REG_SZ;    
-  static char Value[MAX_PATH];   
-  int         psize = MAX_PATH-1;
+  const char CVIReg[MAX_PATH] = "SOFTWARE\\Wow6432Node\\National Instruments\\CVI";
+  HKEY       handle;
+  //TODO : manage error code     
+  int  error = RegOpenKeyEx (HKEY_LOCAL_MACHINE, CVIReg, 0, KEY_ENUMERATE_SUB_KEYS, &handle);
   
-  static char Buffer[MAX_PATH];
-  static char Class[MAX_PATH];
-  static char CVIReg[MAX_PATH] = "SOFTWARE\\Wow6432Node\\National Instruments\\CVI";
-  
-  
+  const int MAX_NB_CVI_COPY = 10;    
+  CVI_INFO ArrOfCVIInfo[MAX_NB_CVI_COPY];
   memset(ArrOfCVIInfo, 0, MAX_NB_CVI_COPY*sizeof(CVI_INFO));
+  int   i;
+  error = ERROR_SUCCESS;
   
-  status = RegOpenKeyEx (HKEY_LOCAL_MACHINE, CVIReg, 0, KEY_ENUMERATE_SUB_KEYS, &handle);
-  
-  for (i = 0, retCode = ERROR_SUCCESS; retCode == ERROR_SUCCESS; i++){ 
-    if(i==MAX_NB_CVI_COPY)
-      break;
-    BufferSize = MAX_PATH;
-    ClassSize =  MAX_PATH;
-    retCode = RegEnumKeyEx(handle, i, Buffer, (LPDWORD)&BufferSize, (LPDWORD)Reserved, Class, (LPDWORD)&ClassSize, &LastWrite); 
-    if (retCode == (DWORD)ERROR_SUCCESS){ 
-      //printf ("Value:%s\n", Buffer); 
+  for (i = 0; !error; i++){ 
+    if(i == MAX_NB_CVI_COPY) break;
+    
+    int         BufferSize  = MAX_PATH;
+    int         ClassSize   = MAX_PATH;
+    int         *Reserved   = NULL;
+    FILETIME    LastWrite;  
+    static char Buffer[MAX_PATH]; 
+    static char Class[MAX_PATH];     
+    error = RegEnumKeyEx(handle, i, Buffer, (LPDWORD)&BufferSize, (LPDWORD)Reserved, Class, (LPDWORD)&ClassSize, &LastWrite); 
+    if (!error){ 
       ArrOfCVIInfo[i].Index = i;
       strcpy(ArrOfCVIInfo[i].Value, Buffer);
       ArrOfCVIInfo[i].nVer = VerToInt(Buffer);
     } 
   }  
-  status = RegCloseKey(handle);   
+  error = RegCloseKey(handle);   
   
-  // Case where we can't find a CVI on the current PC
+  // Case where we are not able to find a CVI on the current PC
   if(i==0){
     CVIDir="";
     error=-1;
@@ -106,47 +92,43 @@ int GetCVIDir(char *CVIDir){
   }
   
   // At this point we read the array of CVI Info and find out the lastest version of CVI available
-  VerMaxId = 0;
-  for (i=0; i<MAX_NB_CVI_COPY; i++){
-    if(ArrOfCVIInfo[i].nVer>=VerMax){
-      VerMaxId = i;
-      VerMax = ArrOfCVIInfo[i].nVer;
+  int VerMaxId  = 0;
+  int VerMax    = 0;      
+  for (int j=0; j != MAX_NB_CVI_COPY; j++){
+    if(ArrOfCVIInfo[j].nVer>=VerMax){
+      VerMaxId = j;
+      VerMax = ArrOfCVIInfo[j].nVer;
     } 
   }
   
-  sprintf(Buffer, "%s\\%s", CVIReg, ArrOfCVIInfo[VerMaxId].Value);
-  status = RegOpenKeyEx (HKEY_LOCAL_MACHINE, Buffer, 0, KEY_QUERY_VALUE, &handle);
-  status = RegQueryValueEx (handle, "InstallDir", NULL, (LPDWORD)&type, (LPBYTE)Value, (LPDWORD)&psize);
-  status = RegCloseKey (handle);
+  static char Buffer2[MAX_PATH];      
+  sprintf(Buffer2, "%s\\%s", CVIReg, ArrOfCVIInfo[VerMaxId].Value);
+  error = RegOpenKeyEx (HKEY_LOCAL_MACHINE, Buffer2, 0, KEY_QUERY_VALUE, &handle);
   
+  static char Value[MAX_PATH];  
+  int         type = REG_SZ;   
+  int         psize = MAX_PATH-1;              
+  error = RegQueryValueEx (handle, "InstallDir", NULL, (LPDWORD)&type, (LPBYTE)Value, (LPDWORD)&psize);
+  error = RegCloseKey (handle);
   strcpy(CVIDir, Value);
 
 Error:
   return(error);
 }
 
-
 //-----------------------------------------------------------------------------
 // Convert 4.0.1 into 401 or 5.0.0 in 500
 static int VerToInt(char *Buffer){
   
-  char  *ptr=NULL;
-  int   i=0, j=0, lenght;
-  
   static char Buffer2[MAX_PATH];               
-  
   memset (Buffer2, 0, MAX_PATH*sizeof(char));
-  ptr = Buffer;
-  // TODO : Win64
-  lenght = (int)strlen(Buffer);
-  for(i=0, j=0; i<lenght; i++, ptr++){
-    if(*ptr!='.'){
-      Buffer2[j++]=*ptr;
-    }
+  char *ptr = Buffer;
+  int lenght = (int)strlen(Buffer); // TODO : Win64
+  for(int i=0, j=0; i!=lenght; i++, ptr++){
+    if(*ptr!='.') Buffer2[j++] = *ptr;
   }
   return atoi(Buffer2);
 }
-
 
 // ----------------------------------------------------------------------------
 // see http://www.cplusplus.com/forum/windows/64088/
@@ -159,7 +141,7 @@ HRESULT ResolveIt(HWND hwnd, LPCTSTR lpszLinkFile, LPTSTR lpszPath, int iPathBuf
 
     *lpszPath = 0;
 
-    // Get a pointer to the IShellLink interface. It is assumed that CoInitialize has already been called.
+    // Get a pointer to the IShellLink interface. 
     IShellLink *psl = NULL;
     hres = CoCreateInstance(&CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, &IID_IShellLink, (LPVOID *)&psl);
     if (SUCCEEDED(hres)) {
@@ -168,9 +150,6 @@ HRESULT ResolveIt(HWND hwnd, LPCTSTR lpszLinkFile, LPTSTR lpszPath, int iPathBuf
       hres = psl->lpVtbl->QueryInterface(psl, &IID_IPersistFile, (void **)&ppf);
     
       if (SUCCEEDED(hres)) {
-        // Add code here to check return value from MultiByteWideChar
-        // for success.
-
         // Load the shortcut.
         WCHAR wsz[MAX_PATH] = {0};
         // Ensure that the string is Unicode.
@@ -183,27 +162,16 @@ HRESULT ResolveIt(HWND hwnd, LPCTSTR lpszLinkFile, LPTSTR lpszPath, int iPathBuf
 
           if (SUCCEEDED(hres)) {
             // Get the path to the link target.
-            TCHAR szGotPath[MAX_PATH] = {0};
-            //hres = psl->lpVtbl->GetPath(psl, szGotPath, _countof(szGotPath), NULL, SLGP_SHORTPATH);
-            hres = psl->lpVtbl->GetPath(psl, szGotPath, MAX_PATH, NULL, SLGP_RAWPATH);        // SLGP_RAWPATH  SLGP_SHORTPATH
-
-            if (SUCCEEDED(hres)) {
-              //hres = StringCbCopy(lpszPath, iPathBufferSize, szGotPath);
-              strcpy(lpszPath, szGotPath); 
-            }
+            hres = psl->lpVtbl->GetPath(psl, lpszPath, MAX_PATH, NULL, SLGP_RAWPATH);        // SLGP_RAWPATH  SLGP_SHORTPATH
           }
         }
-
         // Release the pointer to the IPersistFile interface.
         ppf->lpVtbl->Release(ppf);
       }
-
       // Release the pointer to the IShellLink interface.
       psl->lpVtbl->Release(psl);
     }
-  
     CoUninitialize(); 
   }
   return hres;
 }
-

@@ -39,7 +39,7 @@ void Bench_fprintf2(void);
 void Bench_printf(void);              
 
 // ----------------------------------------------------------------------------
-  FILE *ghLog=NULL;
+FILE *ghLog=NULL;
 
 // ----------------------------------------------------------------------------
 // argc, argv are no longer mandatory in C  
