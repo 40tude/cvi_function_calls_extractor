@@ -1,6 +1,6 @@
 README
 
-Feel free to branch this small project if you want but please do not pull/push proposals yet.
+Feel free to branch this small project if you want but please do not send proposals yet.
 Indeed, as january 7 2013 I'm still getting started with Git & GitHub and I'm not 100% sure I know exactly what I do... :-)
 In fact I use this project as a way to learn how to use Git.
 
